@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
 
-/* so that the contents dont go beyond the parent box */
+::root{
+    --line-border-fill:#3498db;
+    --line-border-empty:#e0e0e0;
+}
 *{
     box-sizing:border-box;
+
 }
 body{
     background-color: #f6f7fb;
@@ -26,8 +30,20 @@ body{
     max-width:100%;
     width:350px;
 }
+.progress-container::before{
+    content:"";
+    background-color:var(--line-border-empty);;
+    position:absolute;
+    top:50%;
+    left:0;
+    height:4px;
+    width:100%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition:0.4s ease;
+}
 .progress{
-    background-color:#3498db;
+    background-color:var(--line-border-fill);
     position:absolute;
     top:50%;
     left:0;
@@ -36,4 +52,20 @@ body{
     transform: translateY(-50%);
     z-index: -1;
     transition:0.4s ease;
+}
+.circle{
+    background-color:#fff;
+    border-radius: 50%;
+    color:#999;
+    height:30px;
+    width:30px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:3px solid var(--line-border-empty);;
+    transition:0.4s ease;
+
+}
+.circle.active{
+ border-color:var(--line-border-fill);
 }
